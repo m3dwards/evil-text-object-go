@@ -4,13 +4,13 @@
   "Evil text objects for Go"
   :prefix "evil-text-object-go-"
   :group 'evil)
-  
+
   (defcustom evil-text-object-go-function-key "f"
   "Key to use for a Go function in the text object maps."
   :type 'string
   :group 'evil-text-object-go)
-  
-  
+
+
 (defun evil-text-object-go--detect-key(containing-map child)
   "Detect which key in CONTAINING-MAP maps to CHILD."
   ;; Note: this only uses the single match.
@@ -31,7 +31,15 @@
     text-object))
 
 (defun evil-text-object-go--make-func-text-object (count type)
-  "Helper to make text object for COUNT Go statements of TYPE.")
+  "Helper to make text object for COUNT Go statements of TYPE."
+  (let ((beg (save-excursion
+               (beginning-of-line)
+               (point)))
+        (end (save-excursion
+               (forward-line)
+               (forward-line)
+               (point))))
+    (evil-range beg end)))
 
 ;;;###autoload (autoload 'evil-text-object-go-function "evil-text-object-go" nil t)
 (evil-define-text-object evil-text-object-go-function (count &optional beg end type)
