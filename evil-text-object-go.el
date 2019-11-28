@@ -1,3 +1,24 @@
+;;; evil-text-object-go.el --- Go specific evil text objects -*- lexical-binding: t; -*-
+
+;; Author: Max Edwards <me@maxedwards.me>
+;; Version: 1.0.0
+;; Package-Requires: ((emacs "25") (evil "1.2.14") (go-mode "1.5.0"))
+;; Keywords: convenience languages tools
+;; URL: https://github.com/maxwedwards/evil-text-object-go
+;;
+;; This file is not part of GNU Emacs.
+
+;;; License:
+
+;; Unlincense (https://github.com/maxwedwards/evil-text-object-go/blob/master/LICENSE)
+
+;;; Commentary:
+
+;; This package provides text objects for Go functions for use
+;; with evil-mode.  See the README for more details.
+
+;;; Code:
+
 (require 'evil)
 (require 'go-mode)
 
@@ -79,3 +100,4 @@ both operator state and visual state."
      'evil-text-object-outer-go-function)))
 
 (provide 'evil-text-object-go)
+;;; evil-text-object-go.el ends here
