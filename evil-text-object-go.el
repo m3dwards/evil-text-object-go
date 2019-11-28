@@ -72,7 +72,7 @@
     (evil-range beg end)))
 
 ;;;###autoload (autoload 'evil-text-object-go-function "evil-text-object-go" nil t)
-(evil-define-text-object evil-text-object-go-function (count &optional beg end type)
+(evil-define-text-object evil-text-object-inner-go-function (count &optional beg end type)
   "Inner text object for the Go statement under point."
   (evil-text-object-go--make-func-text-object count type))
 
@@ -93,7 +93,7 @@ both operator state and visual state."
     (evil-text-object-go--define-key
      evil-text-object-go-function-key
      evil-inner-text-objects-map
-     'evil-text-object-go-function)
+     'evil-text-object-inner-go-function)
     (evil-text-object-go--define-key
      evil-text-object-go-function-key
      evil-outer-text-objects-map
