@@ -21,8 +21,7 @@ Install from Melpa:
 
 Then add this to `init.el`:
 
-```
-elisp
+```elisp
 (add-hook 'go-mode-hook 'evil-text-object-go-add-bindings)
 ```
 
@@ -39,8 +38,7 @@ Note that the implementation uses various Go navigation commands provided by `go
 The default key binding uses the letter `f` (`if` and `af`), but can be customised by changing `evil-text-object-go-statement-key`.
 For example:
 
-```
-elisp
+```elisp
 (setq evil-text-object-go-statement-key "x")
 ```
 
