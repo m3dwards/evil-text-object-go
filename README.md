@@ -30,7 +30,7 @@ Then add this to `init.el`:
 Add `evil-text-object-go` to your .spacemacs file in the additional packages list:
 
 ```elisp
-   dotspacemacs-additional-packages'((evil-text-object-go))
+dotspacemacs-additional-packages'((evil-text-object-go))
 ```
 
 Then add `(add-hook 'go-mode-hook 'evil-text-object-go-add-bindings)` to your `user-config` function in .spacemacs file:
