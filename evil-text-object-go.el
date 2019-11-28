@@ -1,5 +1,5 @@
 (require 'evil)
-(require 'evil)
+(require 'go-mode)
 
 (defgroup evil-text-object-go nil
   "Evil text objects for Go"
