@@ -1,4 +1,5 @@
 (require 'evil)
+(require 'evil)
 
 (defgroup evil-text-object-go nil
   "Evil text objects for Go"
@@ -33,17 +34,31 @@
 (defun evil-text-object-go--make-func-text-object (count type)
   "Helper to make text object for COUNT Go statements of TYPE."
   (let ((beg (save-excursion
-               (beginning-of-line)
+               (go-beginning-of-defun)
+               (when (or (eq this-command 'evil-delete) (eq type 'line))
+                 (previous-line)
+                 (end-of-line))
                (point)))
         (end (save-excursion
-               (forward-line)
-               (forward-line)
+               (--dotimes (1- count)
+                 (go-end-of-defun)
+                 (forward-line))
+               (go-beginning-of-defun)
+               (go-end-of-defun)
+               (when (eq type 'line)
+                 (forward-line))
                (point))))
     (evil-range beg end)))
 
 ;;;###autoload (autoload 'evil-text-object-go-function "evil-text-object-go" nil t)
 (evil-define-text-object evil-text-object-go-function (count &optional beg end type)
   "Inner text object for the Go statement under point."
+  (evil-text-object-go--make-func-text-object count type))
+
+;;;###autoload (autoload 'evil-text-object-go-function "evil-text-object-go" nil t)
+(evil-define-text-object evil-text-object-outer-go-function (count &optional beg end type)
+  "Inner text object for the Go statement under point."
+  :type line
   (evil-text-object-go--make-func-text-object count type))
 
 ;;;###autoload
@@ -57,6 +72,10 @@ both operator state and visual state."
     (evil-text-object-go--define-key
      evil-text-object-go-function-key
      evil-inner-text-objects-map
-     'evil-text-object-go-function)))
+     'evil-text-object-go-function)
+    (evil-text-object-go--define-key
+     evil-text-object-go-function-key
+     evil-outer-text-objects-map
+     'evil-text-object-outer-go-function)))
 
 (provide 'evil-text-object-go)
