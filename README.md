@@ -27,7 +27,7 @@ Then add this to `init.el`:
 
 ### Spacemacs
 
-Add `evil-text-object-go` to your .spacemacs file in the additional packages function:
+Add `evil-text-object-go` to your .spacemacs file in the additional packages list:
 
 ```elisp
    dotspacemacs-additional-packages'((evil-text-object-go))
