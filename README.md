@@ -2,8 +2,7 @@
 
 ## Overview
 
-This Emacs package (`evil-text-object-go`) extends Evil (`evil-mode`) with text objects that
-operate on Python functions.
+This Emacs package (`evil-text-object-go`) extends Evil (`evil-mode`) with text objects that operate on Go functions.
 
 `evil-text-object-inner-go-function` is the 'inner' text object that selects the actual code of the current function(s)
 
