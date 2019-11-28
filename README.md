@@ -1,4 +1,4 @@
-# evil-text-object-go
+# evil-text-object-go.el
 
 ## Overview
 
