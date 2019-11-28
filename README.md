@@ -27,7 +27,24 @@ Then add this to `init.el`:
 
 ### Spacemacs
 
+Add `evil-text-object-go` to your .spacemacs file in the additional packages function:
 
+```elisp
+   dotspacemacs-additional-packages'((evil-text-object-go))
+```
+
+Then add `(add-hook 'go-mode-hook 'evil-text-object-go-add-bindings)` to your `user-config` function in .spacemacs file:
+
+```elisp
+(defun dotspacemacs/user-config ()
+  "Configuration for user code:
+This function is called at the very end of Spacemacs startup, after layer
+configuration.
+Put your configuration code here, except for variables that should be set
+before packages are loaded."
+  (use-package evil-text-object-go)
+  (add-hook 'go-mode-hook 'evil-text-object-go-add-bindings))
+```
 
 Note that the implementation uses various Go navigation commands provided by `go-mode`.
 
